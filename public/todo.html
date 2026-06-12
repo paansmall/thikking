@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thikking - To-Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+  <div class="todo-container">
+    <!-- Header -->
+    <header class="todo-header">
+      <div class="header-content">
+        <h1><i class="fas fa-check-circle"></i> Thikking Todo</h1>
+        <p id="dateDisplay"></p>
+      </div>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-value" id="totalTasks">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="completedTasks">0</span>
+          <span class="stat-label">Done</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-section">
+      <form id="todoForm" class="input-form">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="todoInput"
+            class="todo-input"
+            placeholder="Add a new task..."
+            maxlength="100"
+            required
+          >
+          <span class="char-count"><span id="charCount">0</span>/100</span>
+        </div>
+        <div class="priority-selector">
+          <label for="prioritySelect">Priority:</label>
+          <select id="prioritySelect" class="priority-select">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-add">
+          <i class="fas fa-plus"></i> Add Task
+        </button>
+      </form>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-list"></i> All
+        </button>
+        <button class="filter-btn" data-filter="active">
+          <i class="fas fa-circle"></i> Active
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <i class="fas fa-check"></i> Completed
+        </button>
+      </div>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search tasks..." class="search-input">
+      </div>
+    </section>
+
+    <!-- Priority Filter -->
+    <section class="priority-filter">
+      <button class="priority-filter-btn active" data-priority="all">All Priority</button>
+      <button class="priority-filter-btn" data-priority="high">
+        <span class="priority-badge high">High</span>
+      </button>
+      <button class="priority-filter-btn" data-priority="medium">
+        <span class="priority-badge medium">Medium</span>
+      </button>
+      <button class="priority-filter-btn" data-priority="low">
+        <span class="priority-badge low">Low</span>
+      </button>
+    </section>
+
+    <!-- Tasks List -->
+    <section class="tasks-section">
+      <div id="todoList" class="todo-list">
+        <!-- Tasks will be rendered here -->
+      </div>
+      <div id="emptyState" class="empty-state">
+        <i class="fas fa-inbox"></i>
+        <p>No tasks yet. Add one to get started!</p>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="actions-section">
+      <button id="clearCompleted" class="btn-clear-completed">
+        <i class="fas fa-trash"></i> Clear Completed
+      </button>
+      <button id="clearAll" class="btn-clear-all">
+        <i class="fas fa-broom"></i> Clear All
+      </button>
+    </section>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Task</h2>
+        <button class="modal-close" onclick="closeEditModal()">&times;</button>
+      </div>
+      <form id="editForm" class="modal-form">
+        <div class="form-group">
+          <label for="editTaskText">Task</label>
+          <input type="text" id="editTaskText" class="form-input" required maxlength="100">
+        </div>
+        <div class="form-group">
+          <label for="editPriority">Priority</label>
+          <select id="editPriority" class="form-input">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="modal-buttons">
+          <button type="submit" class="btn-save">Save Changes</button>
+          <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/todo.js"></script>
+</body>
+</html>
