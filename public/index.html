@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thikking - Login & Register</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <!-- Login Form -->
+      <div class="form-wrapper" id="loginForm">
+        <div class="form-header">
+          <h1>Thikking</h1>
+          <p>Welcome back</p>
+        </div>
+        <form id="loginFormElement">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <p class="form-footer">Don't have an account? <a href="#" onclick="toggleForms()">Register here</a></p>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="form-wrapper" id="registerForm" style="display: none;">
+        <div class="form-header">
+          <h1>Thikking</h1>
+          <p>Create your account</p>
+        </div>
+        <form id="registerFormElement">
+          <div class="form-group">
+            <label for="registerEmail">Email Address</label>
+            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="registerUsername">Username</label>
+            <input type="text" id="registerUsername" placeholder="Choose a username" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" placeholder="Create a password (min 6 chars)" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+          <p class="form-footer">Already have an account? <a href="#" onclick="toggleForms()">Login here</a></p>
+        </form>
+      </div>
+
+      <!-- Success Message -->
+      <div class="form-wrapper" id="successForm" style="display: none;">
+        <div class="success-message">
+          <div class="success-icon">✓</div>
+          <h2>Login Successful!</h2>
+          <p id="successEmail"></p>
+          <div class="user-info">
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Username:</strong> <span id="displayUsername"></span></p>
+          </div>
+          <button class="btn btn-primary" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Messages -->
+  <div id="alert" class="alert" style="display: none;"></div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
